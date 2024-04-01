@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">splendidtesting</string>
+    <string name="app_name">splendidtesting</string> 
+    <string name="facebook_app_id">387518190733092</string>
+    <string name="fb_login_protocol_scheme">fb387518190733092</string>
+    <string name="facebook_client_token">9c297b6d9730300ac6567bf644f7bb97</string>
 </resources>
