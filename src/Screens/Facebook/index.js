@@ -9,6 +9,7 @@ import {
 import {AccessToken, LoginManager} from 'react-native-fbsdk';
 import {useNavigation} from '@react-navigation/native';
 import analytics from '@react-native-firebase/analytics';
+import {logAnalyticsEvent} from '../../Analytics';
 
 function Facebook(props) {
   const [email, setEmail] = useState('');
@@ -20,6 +21,12 @@ function Facebook(props) {
     let accessToken = await AccessToken.getCurrentAccessToken();
     setToken(accessToken);
   };
+
+  const predefinedEvent = async () => {
+    let loggg = await analytics().logLogin({method: 'Facebook'});
+    // navigation.navigate('Youtube');
+    console.log(loggg);
+  };
   const handleLogin = () => {
     LoginManager.logInWithPermissions(['public_profile', 'email']).then(
       function (result) {
@@ -28,6 +35,7 @@ function Facebook(props) {
         } else {
           getCurrentAccessToken();
           setResponse(result);
+          predefinedEvent();
         }
       },
       function (error) {
@@ -49,25 +57,27 @@ function Facebook(props) {
   const handlePasswordChange = text => {
     setPassword(text);
   };
-  const handleNormalLogin = () => {
-    async () =>
-      await analytics().logEvent('Loggedin', {
-        id: 3745092,
+  const handleNormalLogin = async () => {
+    try {
+      await logAnalyticsEvent('Loggedin', {
+        id: 37450923434,
         user: 'Akash',
-        description: ['didnt click FB', 'logged in'],
-        duration: '10s',
+        description: 'click FB logged',
       });
-    navigation.navigate('Youtube');
+      // navigation.navigate('Youtube');
+    } catch (error) {
+      console.error('Error logging in:', error);
+    }
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{token ? 'Logged in' : 'Login'}</Text>
+      <Text style={styles.title}>{token ? 'Logged in' : ''}</Text>
       {token && (
         <Text style={styles.response}>
           Access Token{JSON.stringify(token.accessToken)}
         </Text>
       )}
-      {!token && (
+      {/* {!token && (
         <View
           style={{
             width: '100%',
@@ -91,7 +101,7 @@ function Facebook(props) {
             onChangeText={handlePasswordChange}
           />
         </View>
-      )}
+      )} */}
       {!response && (
         <View
           style={{
@@ -104,7 +114,7 @@ function Facebook(props) {
             // title={'Login'}
             style={styles.button}
             onPress={handleNormalLogin}>
-            <Text style={styles.buttonText}>{'Login'}</Text>
+            <Text style={styles.buttonText}>{'Send custom Event'}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -133,7 +143,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
   },
   title: {
     fontSize: 20,

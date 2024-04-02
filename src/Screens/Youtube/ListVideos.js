@@ -11,7 +11,7 @@ const ListVideos = ({ videos }) => {
           <View>
             <Image
               source={{ uri: item.snippet.thumbnails.default.url }}
-              style={{ width: 100, height: 100 }} // Adjust dimensions as needed
+              style={{ width: 100, height: 100 }} 
             />
             <Text>{item.snippet.title}</Text>
           </View>
