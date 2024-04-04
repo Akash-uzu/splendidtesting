@@ -20,6 +20,7 @@ const App = () => {
     }
     routeNameRef.current = currentRouteName;
   };
+  
   return (
     <NavigationContainer
       linking={linking}

@@ -8,3 +8,17 @@ export const logAnalyticsEvent = async (eventName, params) => {
     console.error('Error logging event:', error);
   }
 };
+
+export const gAnalyticsScreenTracker = async (routeNameRef,navigationRef) => {
+  const previousRouteName = routeNameRef.current;
+  const currentRouteName = navigationRef.current.getCurrentRoute().name;
+
+  if (previousRouteName !== currentRouteName) {
+    await analytics().logScreenView({
+      screen_name: currentRouteName,
+      screen_class: currentRouteName,
+    });
+  }
+  routeNameRef.current = currentRouteName;
+};
+

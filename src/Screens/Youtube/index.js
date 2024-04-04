@@ -25,7 +25,9 @@ const Youtube = () => {
     navigateToInstagram();
   };
   const navigateToInstagram = () => {
-    navigation.navigate('Twitter');
+    navigation.navigate('Game', {
+      screen: 'GameLogin',
+    });
   };
 
   return (

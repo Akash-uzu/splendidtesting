@@ -5,9 +5,11 @@ import Facebook from '../Screens/Facebook';
 import Instagram from '../Screens/Instagram';
 import Twitter from '../Screens/Twitter';
 import Youtube from '../Screens/Youtube';
-import Login from '../Login';
+import Login from '../GameLogin';
 import {memo} from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import GameLogin from '../GameLogin';
+import GameView from '../Screens/Twitter';
 
 const Stack = createStackNavigator();
 const LoginNavigator = createStackNavigator();
@@ -17,14 +19,21 @@ const getIcons = ({route}) => ({
   tabBarIcon: ({focused, color, size}) => {
     let iconName;
 
-    if (route.name === 'Facebook') {
-      iconName = 'facebook';
-    } else if (route.name === 'Instagram') {
-      iconName = 'instagram';
-    } else if (route.name === 'Youtube') {
-      iconName = 'youtube';
-    } else if (route.name === 'Twitter') {
-      iconName = 'twitter';
+    switch (route.name) {
+      case 'Facebook':
+        iconName = 'facebook';
+        break;
+      case 'Instagram':
+        iconName = 'instagram';
+        break;
+      case 'Youtube':
+        iconName = 'youtube';
+        break;
+      case 'Game':
+        iconName = 'gamepad-variant';
+        break;
+      default:
+        iconName = 'emoticon-dead';
     }
 
     return (
@@ -43,12 +52,25 @@ const MainStack = props => {
       <Tab.Screen name="Facebook" component={Facebook} />
       <Tab.Screen name="Instagram" component={Instagram} />
       <Tab.Screen name="Youtube" component={Youtube} />
-      <Tab.Screen name="Twitter" component={Twitter} />
+      <Tab.Screen name="Game" component={GameStack} />
       {/* <Tab.Screen name="Home" component={HomeScreenTab} /> */}
     </Tab.Navigator>
   );
 };
 
+const GameStack = props => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      key="GameGameTestLogin"
+      initialRouteName="GameLogin">
+      <Stack.Screen name="GameLogin" component={GameLogin} />
+      <Stack.Screen name="GameTest" component={GameView} />
+    </Stack.Navigator>
+  );
+};
 const LoginStack = memo(props => {
   return (
     <LoginNavigator.Navigator

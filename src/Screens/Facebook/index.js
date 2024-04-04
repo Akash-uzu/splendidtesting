@@ -59,7 +59,7 @@ function Facebook(props) {
   };
   const handleNormalLogin = async () => {
     try {
-      await logAnalyticsEvent('Loggedin', {
+      await logAnalyticsEvent('clicked_customactivity_button_FB', {
         id: 37450923434,
         user: 'Akash',
         description: 'click FB logged',
