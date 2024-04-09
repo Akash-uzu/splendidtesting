@@ -9,6 +9,7 @@
       android:roundIcon="@mipmap/ic_launcher"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
+      <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBomQECZ-CMnXze8uVygfL9SAeKOVakol8" />
       <!-- facebook starts -->
       <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
    	  <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>

@@ -77,31 +77,7 @@ function Facebook(props) {
           Access Token{JSON.stringify(token.accessToken)}
         </Text>
       )}
-      {/* {!token && (
-        <View
-          style={{
-            width: '100%',
-            alignSelf: 'center',
-            // justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <TextInput
-            style={styles.input}
-            placeholder="Email"
-            value={email}
-            placeholderTextColor={'grey'}
-            onChangeText={handleEmailChange}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            secureTextEntry={true}
-            value={password}
-            placeholderTextColor={'grey'}
-            onChangeText={handlePasswordChange}
-          />
-        </View>
-      )} */}
+     
       {!response && (
         <View
           style={{

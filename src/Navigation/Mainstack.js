@@ -10,6 +10,8 @@ import {memo} from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import GameLogin from '../GameLogin';
 import GameView from '../Screens/Twitter';
+import Globe from '../Screens/Globle/Globe';
+import GlobeComponent from '../Screens/ThreeDGloble/3dGlobe';
 
 const Stack = createStackNavigator();
 const LoginNavigator = createStackNavigator();
@@ -53,7 +55,8 @@ const MainStack = props => {
       <Tab.Screen name="Instagram" component={Instagram} />
       <Tab.Screen name="Youtube" component={Youtube} />
       <Tab.Screen name="Game" component={GameStack} />
-      {/* <Tab.Screen name="Home" component={HomeScreenTab} /> */}
+      <Tab.Screen name="Globe" component={Globe} />
+      {/* <Tab.Screen name="Globe" component={GlobeComponent} /> */}
     </Tab.Navigator>
   );
 };
